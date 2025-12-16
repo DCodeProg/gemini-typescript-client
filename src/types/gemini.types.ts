@@ -18,9 +18,9 @@ export type RawResponse = unknown;
 // TODO: Créez un enum pour les rôles de messages
 // Valeurs possibles : USER, MODEL, SYSTEM
 export enum MessageRole {
-    USER = "USER",
-    MODEL = "MODEL",
-    SYSTEM = "SYSTEM"
+    USER,
+    MODEL,
+    SYSTEM,
 }
 
 // TODO: Créez un enum pour les niveaux de température
@@ -125,3 +125,33 @@ export interface Statistics {
 export function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
     return response.success === true;
 }
+
+// TODO: Créez un type Partial pour une configuration optionnelle
+// Nom : PartialConfig
+// Basé sur GenerationConfig mais toutes les propriétés optionnelles
+export type PartialConfig = Partial<GenerationConfig>;
+
+// TODO: Créez un type Required pour forcer toutes les propriétés
+// Nom : RequiredConfig
+// Basé sur GenerationConfig mais toutes les propriétés obligatoires
+export type RequiredConfig = Required<GenerationConfig>;
+
+// TODO: Créez un type Readonly pour une configuration immutable
+// Nom : ImmutableConfig
+// Basé sur GenerationConfig
+export type ImmutableConfig = Readonly<GenerationConfig>;
+
+// TODO: Créez un type Pick pour ne garder que certaines propriétés
+// Nom : MinimalMessage
+// Basé sur Message mais seulement role et content
+export type MinimalMessage = Pick<Message, 'role' | 'content'>;
+
+// TODO: Créez un type Omit pour exclure certaines propriétés
+// Nom : MessageWithoutTimestamp
+// Basé sur Message mais sans timestamp
+export type MessageWithoutTimestamp = Omit<Message, 'timestamp'>;
+
+// TODO: Créez un type Record pour un dictionnaire de modèles
+// Nom : ModelRegistry
+// Clés : string, Valeurs : { name: string, description: string }
+export type ModelRegistry = Record<string, { name: string; description: string }>;
